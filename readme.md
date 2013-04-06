@@ -9,7 +9,7 @@ How to use it
 Get it with:
 
 ```bash
-npm install git://git@github.com:lzrski/flatiron-persona.git
+npm install flatiron-persona
 ```
 
 ``` coffeescript
@@ -131,5 +131,3 @@ To dos
 
 * Tests (preferably in [Mocha](http://visionmedia.github.io/mocha/))
 * Examples
-* Cakefile and compilation to JS
-* Publish on NPM

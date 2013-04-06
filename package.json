@@ -2,11 +2,15 @@
   "name": "flatiron-persona",
   "version": "0.1.0",
   "description": "Flatiron plugin for user authentication with Mozilla Persona",
-  "main": "",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "mocha"
+    "prepublish": "make dist",
+    "test": "make test"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lzrski/flatiron-persona.git"
+  },
   "keywords": [
     "users",
     "authentication",
@@ -20,5 +24,10 @@
   "dependencies": {
     "request": "~2.16.6",
     "underscore": "~1.4.4"
+  },
+  "devDependencies": {
+    "docco": "~0.6.2",
+    "mocha": "*",
+    "coffee-script": "*"
   }
 }
