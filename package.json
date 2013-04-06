@@ -2,7 +2,7 @@
   "name": "flatiron-persona",
   "version": "0.0.0",
   "description": "Flatiron plugin for user authentication with Mozilla Persona",
-  "main": "\"\"",
+  "main": "",
   "scripts": {
     "test": "mocha"
   },
@@ -16,5 +16,8 @@
     "broadway"
   ],
   "author": "Tadeusz Łazurski",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "request": "~2.16.6"
+  }
 }
