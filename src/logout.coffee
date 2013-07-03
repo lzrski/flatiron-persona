@@ -8,11 +8,10 @@ module.exports = ->
   """
 
   @log.debug "Logging out user #{@req.session.username}"
-  a = @ # allows to use data and methods of @ during verification
-  @req.session.destroy (error) ->
+  @req.session.destroy (error) =>
     if error
-      a.log.warn "Logout error.", error
-      a.res.json 500, {error: "Logout error."}
+      @log.warn "Logout error.", error
+      @res.json 500, {error: "Logout error."}
       return
     
     a.res.json 200, {}

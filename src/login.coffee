@@ -22,17 +22,18 @@ module.exports = ->
       assertion : @req.body.assertion
       audience  : @persona.audience
 
-  request.post verifier, (error, response, body) ->
+  request.post verifier, (error, response, body) =>
     if error
-      a.log.warn "Verification error.", error
-      a.res.json 500, {error: "Verification error."}
+      @log.warn "Verification error.", error
+      @res.json 500, {error: "Verification error."}
       return
-    a.log.debug "Verification response body:", body
+    @log.debug "Verification response body:", body
     if body.status is "okay"
-      a.log.debug "User #{body.email} authorized."
+      @log.debug "User #{body.email} authorized."
 
-      a.req.session.username = body.email
-      a.res.json 200, { username: body.email }
+      @req.session.username = body.email
+      do @req.session.save
+      @res.json 200, { username: body.email }
     else 
-      a.log.debug "Authorization failed."
-      a.res.json 401, {}
+      @log.debug "Authorization failed."
+      @res.json 401, {}

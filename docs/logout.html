@@ -66,11 +66,10 @@
   """</span>
 
   <span class="property">@log</span>.debug <span class="string">"Logging out user <span class="subst">#{@req.session.username}</span>"</span>
-  a = @ <span class="comment"># allows to use data and methods of @ during verification</span>
-  <span class="property">@req</span>.session.destroy (error) -&gt;
+  <span class="property">@req</span>.session.destroy (error) =&gt;
     <span class="keyword">if</span> error
-      a.log.warn <span class="string">"Logout error."</span>, error
-      a.res.json <span class="number">500</span>, {error: <span class="string">"Logout error."</span>}
+      <span class="property">@log</span>.warn <span class="string">"Logout error."</span>, error
+      <span class="property">@res</span>.json <span class="number">500</span>, {error: <span class="string">"Logout error."</span>}
       <span class="keyword">return</span>
     
     a.res.json <span class="number">200</span>, {}</pre></div></div>

@@ -80,20 +80,21 @@ module.<span class="function"><span class="title">exports</span></span> = -&gt;
       assertion : <span class="property">@req</span>.body.assertion
       audience  : <span class="property">@persona</span>.audience
 
-  request.post verifier, (error, response, body) -&gt;
+  request.post verifier, (error, response, body) =&gt;
     <span class="keyword">if</span> error
-      a.log.warn <span class="string">"Verification error."</span>, error
-      a.res.json <span class="number">500</span>, {error: <span class="string">"Verification error."</span>}
+      <span class="property">@log</span>.warn <span class="string">"Verification error."</span>, error
+      <span class="property">@res</span>.json <span class="number">500</span>, {error: <span class="string">"Verification error."</span>}
       <span class="keyword">return</span>
-    a.log.debug <span class="string">"Verification response body:"</span>, body
+    <span class="property">@log</span>.debug <span class="string">"Verification response body:"</span>, body
     <span class="keyword">if</span> body.status <span class="keyword">is</span> <span class="string">"okay"</span>
-      a.log.debug <span class="string">"User <span class="subst">#{body.email}</span> authorized."</span>
+      <span class="property">@log</span>.debug <span class="string">"User <span class="subst">#{body.email}</span> authorized."</span>
 
-      a.req.session.username = body.email
-      a.res.json <span class="number">200</span>, { username: body.email }
+      <span class="property">@req</span>.session.username = body.email
+      <span class="keyword">do</span> <span class="property">@req</span>.session.save
+      <span class="property">@res</span>.json <span class="number">200</span>, { username: body.email }
     <span class="keyword">else</span> 
-      a.log.debug <span class="string">"Authorization failed."</span>
-      a.res.json <span class="number">401</span>, {}</pre></div></div>
+      <span class="property">@log</span>.debug <span class="string">"Authorization failed."</span>
+      <span class="property">@res</span>.json <span class="number">401</span>, {}</pre></div></div>
             
         </li>
         
