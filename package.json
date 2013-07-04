@@ -1,6 +1,6 @@
 {
   "name": "flatiron-persona",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Flatiron plugin for user authentication with Mozilla Persona",
   "main": "lib/index.js",
   "scripts": {
