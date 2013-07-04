@@ -14,4 +14,4 @@ module.exports = ->
       @res.json 500, {error: "Logout error."}
       return
     
-    a.res.json 200, {}
+    @res.json 200, {}
