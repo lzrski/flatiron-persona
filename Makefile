@@ -3,7 +3,7 @@ PATH := ./node_modules/.bin:${PATH}
 .PHONY : init clean-docs clean build test dist publish
 
 install:
-	rm npm-shrinkwrap.json
+	if [ -e npm-shrinkwrap.json ]; then rm npm-shrinkwrap.json; fi
 	npm install
 
 docs:
@@ -16,7 +16,7 @@ clean: clean-docs
 clean-docs:
 	rm -rf docs/
 
-build: clean install
+build: clean
 	coffee -cm -o lib/ src/
 
 watch: end-watch
@@ -31,7 +31,7 @@ shrinkwrap:
 test:
 	mocha
 
-dist: clean docs build shrinkwrap test
+dist: clean docs build test
 
 publish: dist
 	npm publish

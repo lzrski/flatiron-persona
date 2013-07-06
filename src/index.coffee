@@ -1,13 +1,17 @@
-_       = require "underscore"
-
+_     = require "underscore"
+debug = require "debug"
+$     = debug "persona"
 
 module.exports =
   name    : "flatiron-persona"
   attach  : (options) ->
+    $     = debug "persona:attach"
+
     defaults =
       path: "/auth"
       audience: undefined
     _.defaults options, defaults
+    $ "Options: %j", options
 
     if not options.audience then throw new Error """
       flatiron-persona: Audience not set.
@@ -44,18 +48,19 @@ module.exports =
     
     @router.mount routes
     @router.attach ->
+      $ = debug "persona:attach:router-attach"
+
       @persona ?= {}
       @persona.audience ?= options.audience
 
   detach  : ->
   init    : (done) ->
+    $ = debug "persona:init"
     app = @
     @router.attach ->
+      $ = debug "persona:init:router-attach"
       {address, port} = app.server.address()
       @persona ?= {}
       @persona.audience ?= "http://#{address}:#{port}/"
-      
-      # Logging with winston - is this a good idea?      
-      @log ?= app.log
 
     do done
