@@ -129,5 +129,5 @@ When calling app.use persona you can provide following options:
 To dos
 ------
 
-* Tests (preferably in [Mocha](http://visionmedia.github.io/mocha/))
+* Tests (preferably in [Mocha](http://mochajs.org/))
 * Examples
